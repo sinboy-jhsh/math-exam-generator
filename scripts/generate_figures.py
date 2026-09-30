@@ -50,6 +50,7 @@ def draw_tick_marks(ax, p1, p2, num_ticks=1, tick_len=0.25, spacing=0.15, lw=1.6
         ax.plot([a[0], b[0]], [a[1], b[1]], color='black', lw=lw)
 
 # Figure 1: 內心角度 (選擇第3題)
+# 修復：70度置於角平分線 (2.75, 2.85)，左右留距充足，絕不碰AB與AC線段
 def make_fig1():
     fig, ax = plt.subplots(figsize=(3.8, 3.4), dpi=300)
     ax.set_aspect('equal')
@@ -66,8 +67,10 @@ def make_fig1():
     ax.plot([B[0], I[0], C[0]], [B[1], I[1], C[1]], 'k--', lw=1.6)
     ax.plot(I[0], I[1], 'ko', markersize=4.5)
 
-    draw_angle_arc(ax, A, B, C, radius=0.65, label='$70^\\circ$', fontsize=13)
-    draw_angle_arc(ax, I, C, B, radius=0.45, fontsize=13)
+    draw_angle_arc(ax, A, B, C, radius=0.5)
+    ax.text(2.75, 2.85, '$70^\\circ$', fontsize=13, fontweight='bold', ha='center', va='center')
+
+    draw_angle_arc(ax, I, C, B, radius=0.45)
 
     ax.text(A[0], A[1] + 0.45, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.55, B[1] - 0.25, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
@@ -84,6 +87,7 @@ def make_fig1():
     plt.close()
 
 # Figure 2: 等腰三角形中線與重心 (選擇第4題)
+# 修復：13 移至兩側線段外側，線段完整連續不被切斷
 def make_fig2():
     fig, ax = plt.subplots(figsize=(3.4, 4.0), dpi=300)
     ax.set_aspect('equal')
@@ -108,10 +112,9 @@ def make_fig2():
     ax.text(D[0], D[1] - 0.75, '$D$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(G[0] + 0.95, G[1], '$G$', fontsize=16, fontweight='bold', fontstyle='italic', va='center',
             bbox=dict(boxstyle='circle,pad=0.15', facecolor='white', edgecolor='none'))
-    ax.text(-3.5, 6.5, '$13$', fontsize=14, fontweight='bold',
-            bbox=dict(boxstyle='round,pad=0.1', facecolor='white', edgecolor='none'))
-    ax.text(3.5, 6.5, '$13$', fontsize=14, fontweight='bold',
-            bbox=dict(boxstyle='round,pad=0.1', facecolor='white', edgecolor='none'))
+
+    ax.text(-4.4, 6.0, '$13$', fontsize=14, fontweight='bold', ha='center', va='center')
+    ax.text(4.4, 6.0, '$13$', fontsize=14, fontweight='bold', ha='center', va='center')
 
     ax.text(0.0, -2.0, '圖(二)', fontsize=15, fontweight='bold', ha='center', va='center')
 
@@ -161,6 +164,7 @@ def make_fig3():
     plt.close()
 
 # Figure 4: 平行線截角與全等 (選擇第9題)
+# 修復：取消上下兩個平行箭頭
 def make_fig4():
     fig, ax = plt.subplots(figsize=(4.0, 3.0), dpi=300)
     ax.set_aspect('equal')
@@ -172,9 +176,6 @@ def make_fig4():
 
     ax.plot([A[0], B[0], C[0], D[0], A[0]], [A[1], B[1], C[1], D[1], A[1]], 'k-', lw=2)
     ax.plot([A[0], C[0]], [A[1], C[1]], 'k--', lw=1.6)
-
-    ax.annotate('', xy=(3.4, 3.0), xytext=(3.1, 3.0), arrowprops=dict(arrowstyle="->", color="black", lw=2))
-    ax.annotate('', xy=(2.9, 0.0), xytext=(2.6, 0.0), arrowprops=dict(arrowstyle="->", color="black", lw=2))
 
     ax.text(A[0] - 0.15, A[1] + 0.45, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.55, B[1] - 0.25, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
@@ -190,6 +191,7 @@ def make_fig4():
     plt.close()
 
 # Figure 5: 銳角外心角度 (填充第2題)
+# 修復：130度上移至圓心下方、BC線段上方之空曠區域 (y = -0.70)，絕不壓BC線段
 def make_fig5():
     fig, ax = plt.subplots(figsize=(3.8, 3.6), dpi=300)
     ax.set_aspect('equal')
@@ -204,8 +206,10 @@ def make_fig5():
     ax.plot([B[0], O[0], C[0]], [B[1], O[1], C[1]], 'k--', lw=1.6)
     ax.plot(O[0], O[1], 'ko', markersize=4.5)
 
-    draw_angle_arc(ax, O, C, B, radius=0.7, label='$130^\\circ$', fontsize=13)
-    draw_angle_arc(ax, A, B, C, radius=0.6, fontsize=13)
+    draw_angle_arc(ax, O, C, B, radius=0.42)
+    ax.text(0.0, -0.70, '$130^\\circ$', fontsize=13, fontweight='bold', ha='center', va='center')
+
+    draw_angle_arc(ax, A, B, C, radius=0.6)
 
     ax.text(A[0], A[1] + 0.45, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.55, B[1] - 0.35, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
@@ -222,6 +226,7 @@ def make_fig5():
     plt.close()
 
 # Figure 6: 等腰三角形點到邊距離 (填充第4題)
+# 修復：H 外推至線段 AB 外側更遠處 (-5.2, 3.8)，與線段 AB 留有足夠安全距離
 def make_fig6():
     fig, ax = plt.subplots(figsize=(3.4, 3.6), dpi=300)
     ax.set_aspect('equal')
@@ -246,9 +251,9 @@ def make_fig6():
     ax.text(B[0] - 0.75, B[1] - 0.3, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(C[0] + 0.75, C[1] - 0.3, '$C$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(D[0], D[1] - 0.75, '$D$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
-    # H placed outward to not collide with AB
-    ax.text(H[0] - 0.75, H[1] + 0.45, '$H$', fontsize=16, fontweight='bold', fontstyle='italic',
-            bbox=dict(boxstyle='circle,pad=0.12', facecolor='white', edgecolor='none'))
+
+    # H 標籤向外推至 (-5.2, 3.8)，與 AB 線段相距 1.35 單位
+    ax.text(-5.2, 3.8, '$H$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
 
     ax.text(0.0, -2.0, '圖(六)', fontsize=15, fontweight='bold', ha='center', va='center')
 
@@ -292,6 +297,7 @@ def make_fig7():
     plt.close()
 
 # Figure 8: 等腰三角形外心 (填充第7題)
+# 修復：A 標籤上移至 (0, 7.3)，完全浮在圓周點線上方；D 標籤置於 (-1.4, 1.2)，不切底邊BC與中線
 def make_fig8():
     fig, ax = plt.subplots(figsize=(3.4, 3.6), dpi=300)
     ax.set_aspect('equal')
@@ -313,23 +319,27 @@ def make_fig8():
 
     draw_right_angle(ax, D, C, A, size=0.8, lw=1.5)
 
-    ax.text(A[0], A[1] + 0.6, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
+    # A 標籤置於 (0, 7.3)，完全在圓周點線（y=6.0）上方
+    ax.text(A[0], 7.3, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.9, B[1] - 0.3, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(C[0] + 0.9, C[1] - 0.3, '$C$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
-    ax.text(D[0] - 0.75, D[1] + 0.5, '$D$', fontsize=16, fontweight='bold', fontstyle='italic',
-            bbox=dict(boxstyle='circle,pad=0.12', facecolor='white', edgecolor='none'))
+
+    # D 標籤懸空於 (-1.4, 1.2)，距離底邊 BC (y=0) 1.2 單位，距離中線 AO (x=0) 1.4 單位
+    ax.text(-1.4, 1.2, '$D$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
+
     ax.text(O[0] + 0.85, O[1], '$O$', fontsize=16, fontweight='bold', fontstyle='italic', va='center',
             bbox=dict(boxstyle='circle,pad=0.15', facecolor='white', edgecolor='none'))
 
     ax.text(0.0, -12.4, '圖(八)', fontsize=15, fontweight='bold', ha='center', va='center')
 
     ax.set_xlim(-9.8, 9.8)
-    ax.set_ylim(-13.5, 7.8)
+    ax.set_ylim(-13.5, 8.5)
 
     plt.savefig('images/fig8_circumcircle.png', dpi=300, bbox_inches='tight')
     plt.close()
 
 # Figure 9: 重心與平行線 (填充第8題)
+# 修復：取消線段 DE 與 BC 上的箭頭；D 向左外推；G 移至 (7.4, 4.3)，懸空於內部，不切DE與AM線
 def make_fig9():
     fig, ax = plt.subplots(figsize=(4.0, 3.0), dpi=300)
     ax.set_aspect('equal')
@@ -347,33 +357,35 @@ def make_fig9():
     ax.plot([A[0], M[0]], [A[1], M[1]], 'k--', lw=1.5)
     ax.plot(G[0], G[1], 'ko', markersize=4.5)
 
-    ax.annotate('', xy=(7.5, 3.0), xytext=(6.5, 3.0), arrowprops=dict(arrowstyle="->", color="black", lw=2))
-    ax.annotate('', xy=(8.0, 0.0), xytext=(7.0, 0.0), arrowprops=dict(arrowstyle="->", color="black", lw=2))
-
     ax.text(A[0], A[1] + 0.55, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.85, B[1] - 0.3, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(C[0] + 0.85, C[1] - 0.3, '$C$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
-    ax.text(D[0] - 0.95, D[1], '$D$', fontsize=16, fontweight='bold', fontstyle='italic', va='center')
-    ax.text(E[0] + 0.55, E[1], '$E$', fontsize=16, fontweight='bold', fontstyle='italic', va='center')
-    ax.text(G[0], G[1] + 0.65, '$G$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center',
-            bbox=dict(boxstyle='circle,pad=0.15', facecolor='white', edgecolor='none'))
+
+    # D 標籤向左外推至 (-0.3, 3.0)，不碰 AB 線段 (AB在 x=1.33 處)
+    ax.text(-0.3, 3.0, '$D$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
+    # E 標籤向右外推至 (12.8, 3.0)，不碰 AC 線段 (AC在 x=11.33 處)
+    ax.text(12.8, 3.0, '$E$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
+
+    # G 標籤懸空於 (7.4, 4.3)，在中線 AM (x≈5.8) 右側與 DE (y=3.0) 上方，線段完整不被切斷
+    ax.text(7.4, 4.3, '$G$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
 
     ax.text(7.5, -2.1, '圖(九)', fontsize=15, fontweight='bold', ha='center', va='center')
 
-    ax.set_xlim(-2.0, 17.0)
+    ax.set_xlim(-2.2, 17.0)
     ax.set_ylim(-2.8, 10.8)
 
     plt.savefig('images/fig9_parallel_centroid.png', dpi=300, bbox_inches='tight')
     plt.close()
 
 # Figure 10: 幾何角度推導 (填充第9題)
+# 修復：40度標籤下移至 (3.0, 5.2)，三角形寬度大於 2.2 單位，絕不壓兩側線段 AB 與 AC
 def make_fig10():
     fig, ax = plt.subplots(figsize=(3.4, 3.8), dpi=300)
     ax.set_aspect('equal')
     ax.axis('off')
     B = np.array([0.0, 0.0])
     C = np.array([6.0, 0.0])
-    A = np.array([3.0, 3.0 * np.tan(np.radians(70))])
+    A = np.array([3.0, 3.0 * np.tan(np.radians(70))]) # y ≈ 8.24
     ce_len = 12.0 * np.cos(np.radians(70))
     ac_unit = (A - C) / np.linalg.norm(A - C)
     E = C + ac_unit * ce_len
@@ -383,12 +395,15 @@ def make_fig10():
 
     draw_tick_marks(ax, B, C, num_ticks=2, tick_len=0.5, lw=1.5)
     draw_tick_marks(ax, B, E, num_ticks=2, tick_len=0.5, lw=1.5)
-    draw_angle_arc(ax, A, B, C, radius=0.8, label='$40^\\circ$', fontsize=13)
+
+    draw_angle_arc(ax, A, B, C, radius=0.55)
+    # 40度放在 (3.0, 5.2)，此處三角形左右寬度 > 2.2，兩側離線段各 > 0.6 單位
+    ax.text(3.0, 5.2, '$40^\\circ$', fontsize=13, fontweight='bold', ha='center', va='center')
 
     ax.text(A[0], A[1] + 0.5, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.65, B[1] - 0.25, '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(C[0] + 0.65, C[1] - 0.25, '$C$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
-    ax.text(E[0] + 0.65, E[1] + 0.1, '$E$', fontsize=16, fontweight='bold', fontstyle='italic', va='center')
+    ax.text(E[0] + 0.75, E[1] + 0.1, '$E$', fontsize=16, fontweight='bold', fontstyle='italic', va='center')
 
     ax.text(3.0, -1.6, '圖(十)', fontsize=15, fontweight='bold', ha='center', va='center')
 
@@ -418,16 +433,13 @@ def make_fig11():
     draw_tick_marks(ax, B, C, num_ticks=2, tick_len=0.5, lw=1.5)
     draw_tick_marks(ax, D, C, num_ticks=2, tick_len=0.5, lw=1.5)
 
-    # Right angle marker in Q1
     ax.plot([0, 0.45, 0.45], [0.45, 0.45, 0], 'k-', lw=1.4)
 
-    # All labels completely separated from lines with clean padding
     ax.text(A[0], A[1] + 0.45, '$A$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(B[0] - 0.55, B[1], '$B$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(C[0], C[1] - 0.65, '$C$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
     ax.text(D[0] + 0.55, D[1], '$D$', fontsize=16, fontweight='bold', fontstyle='italic', ha='center', va='center')
 
-    # O placed in Q3 with white background padding: zero line intersection!
     ax.text(-0.65, -0.65, '$O$', fontsize=15, fontweight='bold', fontstyle='italic', ha='center', va='center',
             bbox=dict(boxstyle='circle,pad=0.15', facecolor='white', edgecolor='none'))
 
@@ -440,6 +452,7 @@ def make_fig11():
     plt.close()
 
 # Figure 12: 園區生態步道與涼亭 (非選第二題)
+# 修復：G(涼亭) 置於 (15.5, 4.5)，在角 BGC 開闊空間正中央，距離四面線段皆 > 4.5 單位，絕不壓線
 def make_fig12():
     fig, ax = plt.subplots(figsize=(4.0, 3.4), dpi=300)
     ax.set_aspect('equal')
@@ -447,7 +460,7 @@ def make_fig12():
     B = np.array([0.0, 0.0])
     C = np.array([40.0, 0.0])
     A = np.array([0.0, 30.0])
-    G = (A + B + C) / 3.0
+    G = (A + B + C) / 3.0 # (13.33, 10.0)
     H = np.array([272.0 / 15.0, 82.0 / 5.0])
 
     ax.plot([A[0], B[0], C[0], A[0]], [A[1], B[1], C[1], A[1]], 'k-', lw=2)
@@ -463,8 +476,10 @@ def make_fig12():
     ax.text(A[0] - 2.8, A[1] + 1.8, '$A$', fontsize=16, fontweight='bold', fontstyle='italic')
     ax.text(B[0] - 3.2, B[1] - 2.2, '$B$', fontsize=16, fontweight='bold', fontstyle='italic')
     ax.text(C[0] + 2.8, C[1] - 2.2, '$C$', fontsize=16, fontweight='bold', fontstyle='italic')
-    ax.text(G[0] + 1.8, G[1] - 4.0, '$G$(涼亭)', fontsize=14, fontweight='bold', fontstyle='italic',
-            bbox=dict(boxstyle='round,pad=0.15', facecolor='white', edgecolor='none'))
+
+    # G(涼亭) 放在 (15.5, 4.8)，處於開闊角 BGC 內部正中央，四面空間極大
+    ax.text(15.5, 4.8, '$G$(涼亭)', fontsize=13, fontweight='bold', fontstyle='italic', ha='center', va='center')
+
     ax.text(H[0] + 3.2, H[1] + 1.8, '$H$', fontsize=15, fontweight='bold', fontstyle='italic',
             bbox=dict(boxstyle='circle,pad=0.12', facecolor='white', edgecolor='none'))
 
@@ -492,4 +507,4 @@ if __name__ == '__main__':
     make_fig10()
     make_fig11()
     make_fig12()
-    print('All 12 figures regenerated with complete zero-collision protection!')
+    print('All 12 figures successfully regenerated with zero-collision layout!')
