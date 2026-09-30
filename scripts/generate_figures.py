@@ -483,12 +483,12 @@ def make_fig12():
     ax.text(H[0] + 3.2, H[1] + 1.8, '$H$', fontsize=15, fontweight='bold', fontstyle='italic',
             bbox=dict(boxstyle='circle,pad=0.12', facecolor='white', edgecolor='none'))
 
-    ax.text(-5.5, 15.0, '30m', fontsize=14, fontweight='bold', va='center')
-    ax.text(20.0, -3.8, '40m', fontsize=14, fontweight='bold', ha='center')
+    ax.text(-2.5, 15.0, '30m', fontsize=14, fontweight='bold', ha='right', va='center')
+    ax.text(20.0, -3.8, '40m', fontsize=14, fontweight='bold', ha='center', va='top')
 
     ax.text(20.0, -9.5, '圖(十二)', fontsize=15, fontweight='bold', ha='center', va='center')
 
-    ax.set_xlim(-8.5, 48.5)
+    ax.set_xlim(-10.0, 48.5)
     ax.set_ylim(-12.0, 36.5)
 
     plt.savefig('images/fig12_park_gazebo.png', dpi=300, bbox_inches='tight')
