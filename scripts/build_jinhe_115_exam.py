@@ -96,7 +96,7 @@ def build_exam_paper():
     # Q9 (附圖四，上下型文繞圖)
     add_question_with_image_top_bottom(
         doc, "9. ", 
-        "如圖(四)，四邊形 ABCD 中，已知線段 AD // 線段 BC。小錦想要證明 △ABC ≅ △CDA，他還需要加上下列哪一個條件？", 
+        "如圖(四)，四邊形 ABCD 中，已知線段 AD // 線段 BC。小錦想要證明 △ABC ≅ △CDA，下列哪一個條件【無法】使兩三角形全等？", 
         scope_str="(3-1)", 
         image_path="images/fig4_congruence.png", 
         options_str="(A) 線段 AB = 線段 CD　　　(B) 線段 AD = 線段 BC　　　(C) ∠B = ∠D　　　(D) ∠BAC = ∠DCA", 
@@ -352,7 +352,7 @@ def build_solution_paper():
     t_mc = doc.add_table(rows=2, cols=10)
     t_mc.alignment = WD_TABLE_ALIGNMENT.CENTER
     mc_keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-    mc_ans = ["B", "D", "A", "C", "C", "D", "B", "A", "B", "A"]
+    mc_ans = ["B", "D", "A", "C", "C", "D", "B", "A", "A", "A"]
     for i in range(10):
         c0 = t_mc.cell(0, i)
         c1 = t_mc.cell(1, i)
