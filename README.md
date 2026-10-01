@@ -39,18 +39,18 @@
 #### 1. 在 Antigravity 對話框貼上一句話自動安裝（最推薦）：
 ```text
 請幫我把這個 GitHub 倉庫安裝成全域 Skill：
-https://github.com/geniefu/jhsh-math-exam-generator
+https://github.com/sinboy-jhsh/math-exam-generator
 並幫我檢查安裝所需的 Python 套件 (python-docx, matplotlib, numpy, sympy)
 ```
 
 #### 2. 透過 Git 指令一鍵安裝（未來更新只需 `git pull`）：
 - **Windows (PowerShell)**:
   ```powershell
-  git clone https://github.com/geniefu/jhsh-math-exam-generator.git "$HOME\.gemini\config\skills\jhsh-math-exam-generator"
+  git clone https://github.com/sinboy-jhsh/math-exam-generator.git "$HOME\.gemini\config\skills\jhsh-math-exam-generator"
   ```
 - **macOS / Linux**:
   ```bash
-  git clone https://github.com/geniefu/jhsh-math-exam-generator.git ~/.gemini/config/skills/jhsh-math-exam-generator
+  git clone https://github.com/sinboy-jhsh/math-exam-generator.git ~/.gemini/config/skills/jhsh-math-exam-generator
   ```
 
 #### 3. 手動解壓縮安裝：
